@@ -1,4 +1,3 @@
-
 #include <Python.h>
 #include "AX5043_SPI.h"
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
@@ -63,7 +62,7 @@ PyMODINIT_FUNC PyInit__ax5043(void)
     return module;
 }
 
-static PyObject *ax5043_ax5043_write(PyObject *self, PyObject *args){
+static PyObject *ax5043_ax5043_init(PyObject *self, PyObject *args){
     ax5043_init();
 }
 
@@ -94,7 +93,7 @@ static PyObject *ax5043_ax5043_read_reg(PyObject *self, PyObject *args){
         return NULL;
     char ch = ax5043_read_reg(addr);
 
-    PyObject *ret = Py_BuildValue("c", char);
+    PyObject *ret = Py_BuildValue("c", ch);
     return ret;
 }
 
