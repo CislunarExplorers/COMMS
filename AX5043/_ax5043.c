@@ -42,7 +42,7 @@ static PyMethodDef module_methods[] = {
 };
 
 
-PyMODINIT_FUNC init__ax5043(void)
+PyMODINIT_FUNC init_AX5043(void)
 {
 	PyObject *m = Py_InitModule3("_ax5043", module_methods, module_docstring);
 	if(m == NULL)
@@ -69,7 +69,7 @@ static PyObject *ax5043_ax5043_write_reg(PyObject *self, PyObject *args){
     unsigned char value;
      if (!PyArg_ParseTuple(args, "HB",&addr, &value))
         return NULL;
-    ax5043_write_reg(addr,value);
+    ax5043_writeReg(addr,value);
 
     PyObject *ret = Py_BuildValue("B", value);
     return ret;
@@ -79,7 +79,7 @@ static PyObject *ax5043_ax5043_read_reg(PyObject *self, PyObject *args){
     uint16_t addr;
      if (!PyArg_ParseTuple(args, "H",&addr))
         return NULL;
-    char ch = ax5043_read_reg(addr);
+    char ch = ax5043_readReg(addr);
 
     PyObject *ret = Py_BuildValue("c", ch);
     return ret;
