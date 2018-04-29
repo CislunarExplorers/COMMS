@@ -1,4 +1,4 @@
-import _ax5043
+import _AX5043 as _ax5043
 import time
 
 usleep = lambda x: time.sleep(x/1000000.0)
