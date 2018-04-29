@@ -49,7 +49,7 @@ PyMODINIT_FUNC PyInit__ax5043(void)
         PyModuleDef_HEAD_INIT,
         "_ax5043",
         module_docstring,
-        -1,
+        100,
         module_methods,
         NULL,
         NULL,
