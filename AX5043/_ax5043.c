@@ -42,24 +42,12 @@ static PyMethodDef module_methods[] = {
 };
 
 
-PyMODINIT_FUNC PyInit__ax5043(void)
+PyMODINIT_FUNC init__ax5043(void)
 {
-    PyObject *module;
-    static struct PyModuleDef moduledef = {
-        PyModuleDef_HEAD_INIT,
-        "_ax5043",
-        module_docstring,
-        100,
-        module_methods,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    };
-    module = PyModule_Create(&moduledef);
-    if (!module) return NULL;
+	PyObject *m = Py_InitModule3("_ax5043", module_methods, module_docstring);
+	if(m == NULL)
+		return;
 
-    return module;
 }
 
 static PyObject *ax5043_ax5043_init(PyObject *self, PyObject *args){
