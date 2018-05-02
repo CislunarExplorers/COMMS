@@ -43,7 +43,14 @@ class AX5043():
 		usleep(100)
 
 		# Set freqA and tune for TX
-		_ax5043.set_reg_tx()
+		#_ax5043.set_reg_tx()
+
+		_ax5043.write_reg(Register.AX_REG_PLLLOOP.value,0x0B);
+		_ax5043.write_reg(Register.AX_REG_PLLCPI.value,0x10);
+		_ax5043.write_reg(Register.AX_REG_PLLVCODIV.value,0x24);
+		_ax5043.write_reg(Register.AX_REG_XTALCAP.value,0x00);
+		_ax5043.write_reg(Register.AX_REG_TUNE_F00.value,0x0F);
+		_ax5043.write_reg(Register.AX_REG_TUNE_F18.value,0x06);
 
 		# Clear FIFO data and flags
 		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x03)
