@@ -1,5 +1,6 @@
 import _ax5043
 import time
+from registers import Register
 
 usleep = lambda x: time.sleep(x/1000000.0)
 
