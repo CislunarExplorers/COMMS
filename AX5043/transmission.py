@@ -59,7 +59,11 @@ class AX5043():
 		_ax5043.write_reg(Register.AX_REG_PWRMODE.value,Register.PWRMODE_FULLTX.value)
 		usleep(100)
 
-		_ax5043.write_preamble();
+		#_ax5043.write_preamble();
+		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x62)
+		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x38)
+		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x21)
+		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0xAA)
 
 		# Start Writing 
 		self.write_packets(data)
