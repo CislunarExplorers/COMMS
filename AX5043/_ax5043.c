@@ -44,13 +44,19 @@ PyMODINIT_FUNC init_ax5043(void)
 
 static PyObject *ax5043_ax5043_init(PyObject *self, PyObject *args){
     ax5043_init();
+    PyObject * ret;
+    ret = PyString_FromString("done");
+    return ret;
 }
 
 static PyObject *ax5043_ax5043_SPI_setup(PyObject *self, PyObject *args){
     char *filename;
+    PyObject * ret;
     if (!PyArg_ParseTuple(args, "z", &filename))
         return NULL;
     ax5043_SPI_setup(filename);
+    ret = PyString_FromString("done");
+    return ret;
 }
 
 static PyObject *ax5043_ax5043_write(PyObject *self, PyObject *args){

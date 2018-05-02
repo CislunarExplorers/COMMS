@@ -14,21 +14,21 @@ class AX5043():
 
 		_ax5043.setup_SPI("./log.txt")
 
-		status = _ax5043.read_reg(Register.AX_REG_PWRMODE)
+		status = _ax5043.read_reg(Register.AX_REG_PWRMODE.value)
 		print("Power mode : {}".format(status))
 
-		version = _ax5043.read_reg(Register.AX_REG_SILICONREVISION)
+		version = _ax5043.read_reg(Register.AX_REG_SILICONREVISION.value)
 		print("Silicon Revision : {}".format(version))
 
-		state = _ax5043.read_reg(Register.AX_REG_RADIOSTATE)
+		state = _ax5043.read_reg(Register.AX_REG_RADIOSTATE.value)
 		print("Radio State : {}".format(state))
 
 		# turn off receiver
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_STANDBY)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE.value,Register.PWRMODE_STANDBY.value)
 		usleep(100)
 
 		# release FIFO ports
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_FIFOON)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE.value,Register.PWRMODE_FIFOON.value)
 		usleep(100)
 
 		# Init Transceiver
