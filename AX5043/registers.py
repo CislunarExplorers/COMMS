@@ -30,7 +30,7 @@ class Register(Enum):
 	AX_REG_RADIOSTATE = 0x01C 	#Radio Controller State 
 	AX_REG_XTALSTATUS = 0x01D 	#Crystal Oscillator Status 
 	AX_REG_PINSTATE = 0x020 	#Pin State 
-	AX_REG_PINFUNCSYSCLK = x021 	#Pin Function SYSCLK 
+	AX_REG_PINFUNCSYSCLK = 0x021 	#Pin Function SYSCLK 
 	AX_REG_PINFUNCDCLK = 0x022 	#Pin Function DCLK 
 	AX_REG_PINFUNCDATA = 0x023 	#Pin Function DATA 
 	AX_REG_PINFUNCIRQ = 0x024 	#Pin Function IRQ 
