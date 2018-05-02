@@ -102,6 +102,7 @@ class AX5043():
 		_ax5043.write_reg(Register.AX_REG_PWRMODE.value,Register.PWRMODE_FULLRX.value)
 
 		print("Receiving...\n")
+		rstat = 0
 		while (rstat != Register.AX_REG_RADIOSTATE_RX_MASK.value):
 			rstat = _ax5043.read_reg(Register.AX_REG_RADIOSTATE.value)
 		
@@ -142,4 +143,4 @@ class AX5043():
 
 if __name__ == "__main__":
 	radio = AX5043()
-	radio.transmit("HelloWorld")
+	radio.receive()
