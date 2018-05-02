@@ -539,10 +539,10 @@ void ax5043_init() {
     ax5043_autoranging();
 }
 
-void ax5043_SPI_setup() {
+void ax5043_SPI_setup(char *filename) {
     int fd;
     
-    fp = fopen("/home/pi/log.txt","w+");
+    fp = fopen(filename,"w+");
     
     fd = wiringPiSPISetup(SPI_DEVICE, SPI_SPEED);
     if(fd < 0){

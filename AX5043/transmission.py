@@ -12,7 +12,7 @@ class AX5043():
 
 		print("Initializing the Antenna")
 
-		_ax5043.setup_SPI()
+		_ax5043.setup_SPI("./log.txt")
 
 		status = _ax5043.read_reg(Register.AX_REG_PWRMODE)
 		print("Power mode : {}".format(status))

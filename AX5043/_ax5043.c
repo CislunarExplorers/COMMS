@@ -47,7 +47,10 @@ static PyObject *ax5043_ax5043_init(PyObject *self, PyObject *args){
 }
 
 static PyObject *ax5043_ax5043_SPI_setup(PyObject *self, PyObject *args){
-    ax5043_SPI_setup();
+    char *filename;
+    if (!PyArg_ParseTuple(args, "z", &filename))
+        return NULL;
+    ax5043_SPI_setup(filename);
 }
 
 static PyObject *ax5043_ax5043_write(PyObject *self, PyObject *args){
