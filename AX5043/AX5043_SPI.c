@@ -525,7 +525,7 @@ void ax5043_set_reg_rx() {
 void ax5043_init() {
 	
 	char reg;
-	
+
 	//set_registers
 	ax5043_writeAllReg();
     
@@ -537,6 +537,19 @@ void ax5043_init() {
 
     //Perform autoranging
     ax5043_autoranging();
+}
+
+void ax5043_SPI_setup() {
+    int fd;
+    
+    fp = fopen("/home/pi/log.txt","w+");
+    
+    fd = wiringPiSPISetup(SPI_DEVICE, SPI_SPEED);
+    if(fd < 0){
+        fprintf(stderr, "Unable to open SPI device\n\r");
+    } else {
+        fprintf(fp,"SPI Initialization successful : %i\n",fd) ;
+    }
 }
 
 void ax5043_autoranging() {

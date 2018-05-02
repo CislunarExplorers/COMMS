@@ -6,11 +6,13 @@ usleep = lambda x: time.sleep(x/1000000.0)
 
 class AX5043():
 
-	def init(self):
+	def __init__(self):
 		self.transmitted = 0
 		self.received = 0
 
 		print("Initializing the Antenna")
+
+		_ax5043.setup_SPI()
 
 		status = _ax5043.read_reg(Register.AX_REG_PWRMODE)
 		print("Power mode : {}".format(status))
@@ -43,12 +45,7 @@ class AX5043():
 		usleep(100)
 
 		# Set freqA and tune for TX
-		_ax5043.write_reg(Register.AX_REG_PLLLOOP.value,0x0B);
-		_ax5043.write_reg(Register.AX_REG_PLLCPI.value,0x10);
-		_ax5043.write_reg(Register.AX_REG_PLLVCODIV.value,0x24);
-		_ax5043.write_reg(Register.AX_REG_XTALCAP.value,0x00);
-		_ax5043.write_reg(Register.AX_REG_TUNE_F00.value,0x0F);
-		_ax5043.write_reg(Register.AX_REG_TUNE_F18.value,0x06);
+		self.set_reg_tx()
 
 		# Clear FIFO data and flags
 		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x03)
@@ -58,10 +55,7 @@ class AX5043():
 		usleep(100)
 
 		#_ax5043.write_preamble();
-		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x62)
-		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x38)
-		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x21)
-		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0xAA)
+		self.write_preamble()
 
 		# Start Writing 
 		self.write_packets(data)
@@ -124,6 +118,20 @@ class AX5043():
 		# Set power mode to POWERDOWN
 		_ax5043.write_reg(Register.AX_REG_PWRMODE.value,Register.PWRMODE_POWERDOWN.value)
 		return received_data 
+
+	def write_preamble(self):
+		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x62)
+		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x38)
+		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x21)
+		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0xAA)
+
+	def set_reg_tx(self):
+		_ax5043.write_reg(Register.AX_REG_PLLLOOP.value,0x0B);
+		_ax5043.write_reg(Register.AX_REG_PLLCPI.value,0x10);
+		_ax5043.write_reg(Register.AX_REG_PLLVCODIV.value,0x24);
+		_ax5043.write_reg(Register.AX_REG_XTALCAP.value,0x00);
+		_ax5043.write_reg(Register.AX_REG_TUNE_F00.value,0x0F);
+		_ax5043.write_reg(Register.AX_REG_TUNE_F18.value,0x06);
 
 	def write_packets(self, data):
 		for byte in data:
