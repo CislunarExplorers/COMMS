@@ -89,6 +89,8 @@ class AX5043():
 
 	def receive(self):
 		print("Mode changed to Receiving")
+
+		self.set_reg_rx()
 		# Clear FIFO data and flags
 		_ax5043.write_reg(Register.AX_REG_FIFOSTAT.value,0x03)
 
@@ -132,6 +134,14 @@ class AX5043():
 		_ax5043.write_reg(Register.AX_REG_XTALCAP.value,0x00);
 		_ax5043.write_reg(Register.AX_REG_TUNE_F00.value,0x0F);
 		_ax5043.write_reg(Register.AX_REG_TUNE_F18.value,0x06);
+
+	def set_reg_rx(self):
+		_ax5043.write_reg(Register.AX_REG_PLLLOOP.value,0x0B);
+		_ax5043.write_reg(Register.AX_REG_PLLCPI.value,0x10);
+		_ax5043.write_reg(Register.AX_REG_PLLVCODIV.value,0x25);
+		_ax5043.write_reg(Register.AX_REG_XTALCAP.value,0x00);
+		_ax5043.write_reg(Register.AX_REG_TUNE_F00.value,0x0F);
+		_ax5043.write_reg(Register.AX_REG_TUNE_F18.value,0x02);;
 
 	def write_packets(self, data):
 		for byte in data:
