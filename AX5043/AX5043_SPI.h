@@ -40,7 +40,7 @@ void ax5043_set_reg_tx(void);
 void ax5043_set_reg_rx(void);
 void ax5043_set_datarate(void);
 void ax5043_RX(void);
-void ax5043_SPI_setup(char*)
+void ax5043_SPI_setup(char*);
 
 //Addresses from 0x000 to 0x06F are reserved for “dynamic registers”, i.e. registers that are expected to be frequently accessed during normal operation
 //Addresses from 0x070 to 0x0FF have been left unused (they could only be accessed using the two address byte SPI format).
