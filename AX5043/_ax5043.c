@@ -26,7 +26,7 @@ static PyObject *ax5043_ax5043_read_reg(PyObject *self, PyObject *args);
 
 static PyMethodDef module_methods[] = {
     {"init", ax5043_ax5043_init, METH_VARARGS, ax5043_init_docstring},
-    {"setup_SPI", ax5043_ax5043_SPI_setup, METH_VARARGS, ax5043_init_docstring},
+    {"setup_SPI", ax5043_ax5043_SPI_setup, METH_VARARGS, ax5043_SPI_setup_docstring},
     {"write", ax5043_ax5043_write, METH_VARARGS, ax5043_write_docstring},
     {"write_reg", ax5043_ax5043_write_reg, METH_VARARGS, ax5043_write_reg_docstring},
     {"read_reg", ax5043_ax5043_read_reg, METH_VARARGS, ax5043_read_reg_docstring},
