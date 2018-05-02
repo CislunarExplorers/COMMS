@@ -87,15 +87,12 @@ static PyObject *ax5043_ax5043_read_reg(PyObject *self, PyObject *args){
 
 static PyObject *ax5043_ax5043_set_reg_tx(PyObject *self, PyObject *args){
     ax5043_set_reg_tx();
-    return NULL;
 }
 
 static PyObject *ax5043_ax5043_set_reg_rx(PyObject *self, PyObject *args){
     ax5043_set_reg_rx();
-    return NULL;
 }
 
 static PyObject *ax5043_ax5043_write_preamble(PyObject *self, PyObject *args){
     ax5043_writePreamble();
-    return NULL;
 }
