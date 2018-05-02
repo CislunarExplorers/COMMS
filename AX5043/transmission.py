@@ -22,11 +22,11 @@ class AX5043():
 		print("Radio State : {}".format(state))
 
 		# turn off receiver
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,PWRMODE_STANDBY)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_STANDBY)
 		usleep(100)
 
 		# release FIFO ports
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,PWRMODE_FIFOON)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_FIFOON)
 		usleep(100)
 
 		# Init Transceiver
@@ -36,10 +36,10 @@ class AX5043():
 		print("Mode changed to Tranmitting")
 		# According to ERRATA for Silicon v51 
 		# turn off receiver
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,PWRMODE_STANDBY)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_STANDBY)
 		usleep(100)
 		# release FIFO ports
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,PWRMODE_FIFOON)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_FIFOON)
 		usleep(100)
 
 		# Set freqA and tune for TX
@@ -49,7 +49,7 @@ class AX5043():
 		_ax5043.write_reg(Register.AX_REG_FIFOSTAT,0x03)
 
 		# FULL TX Mode
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,PWRMODE_FULLTX)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_FULLTX)
 		usleep(100)
 
 		_ax5043.write_preamble();
@@ -81,7 +81,7 @@ class AX5043():
 		print("TX done...Packet No : {}".format(self.transmitted))
 		
 		# Powerdown
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,PWRMODE_POWERDOWN)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_POWERDOWN)
 		usleep(5000000)
 
 	def receive(self):
@@ -90,7 +90,7 @@ class AX5043():
 		_ax5043.write_reg(Register.AX_REG_FIFOSTAT,0x03)
 
 		# Set power mode to FULLRX
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,PWRMODE_FULLRX)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_FULLRX)
 
 		print("Receiving...\n")
 		while (rstat != Register.AX_REG_RADIOSTATE_RX_MASK):
@@ -112,7 +112,7 @@ class AX5043():
 		
 		print(" ... Packet No : {}".format(self.received))
 		# Set power mode to POWERDOWN
-		_ax5043.write_reg(Register.AX_REG_PWRMODE,PWRMODE_POWERDOWN)
+		_ax5043.write_reg(Register.AX_REG_PWRMODE,Register.PWRMODE_POWERDOWN)
 		return received_data 
 
 	def write_packets(self, data):
