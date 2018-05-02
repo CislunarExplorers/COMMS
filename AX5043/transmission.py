@@ -43,8 +43,6 @@ class AX5043():
 		usleep(100)
 
 		# Set freqA and tune for TX
-		#_ax5043.set_reg_tx()
-
 		_ax5043.write_reg(Register.AX_REG_PLLLOOP.value,0x0B);
 		_ax5043.write_reg(Register.AX_REG_PLLCPI.value,0x10);
 		_ax5043.write_reg(Register.AX_REG_PLLVCODIV.value,0x24);
@@ -127,9 +125,8 @@ class AX5043():
 		return received_data 
 
 	def write_packets(self, data):
-		data_byte = bytearray(data)
-		for byte in data_byte:
-			hex_byte = hex(byte)
+		for byte in data:
+			hex_byte = ord(byte)
 			# print(hex_byte)
 			_ax5043.write(hex_byte)
 

@@ -13,12 +13,6 @@ static char ax5043_write_reg_docstring[] =
     "Write packets to the specified register.";
 static char ax5043_read_reg_docstring[] = 
     "Read packets from a specified register.";
-static char ax5043_set_reg_tx_docstring[] = 
-    "Setting up AX5043 to TX mode.";
-static char ax5043_set_reg_rx_docstring[] = 
-    "Setting up AX5043 to RX mode.";
-static char ax5043_write_preamble_docstring[] = 
-    "Writing the preamble for transmission";
 
 
 
@@ -26,18 +20,12 @@ static PyObject *ax5043_ax5043_init(PyObject *self, PyObject *args);
 static PyObject *ax5043_ax5043_write(PyObject *self, PyObject *args);
 static PyObject *ax5043_ax5043_write_reg(PyObject *self, PyObject *args);
 static PyObject *ax5043_ax5043_read_reg(PyObject *self, PyObject *args);
-static PyObject *ax5043_ax5043_set_reg_tx(PyObject *self, PyObject *args);
-static PyObject *ax5043_ax5043_set_reg_rx(PyObject *self, PyObject *args);
-static PyObject *ax5043_ax5043_write_preamble(PyObject *self, PyObject *args);
 
 static PyMethodDef module_methods[] = {
     {"init", ax5043_ax5043_init, METH_VARARGS, ax5043_init_docstring},
     {"write", ax5043_ax5043_write, METH_VARARGS, ax5043_write_docstring},
     {"write_reg", ax5043_ax5043_write_reg, METH_VARARGS, ax5043_write_reg_docstring},
     {"read_reg", ax5043_ax5043_read_reg, METH_VARARGS, ax5043_read_reg_docstring},
-    {"set_reg_tx", ax5043_ax5043_set_reg_tx, METH_VARARGS, ax5043_set_reg_tx_docstring},
-    {"set_reg_rx", ax5043_ax5043_set_reg_rx, METH_VARARGS, ax5043_set_reg_rx_docstring},
-    {"write_preamble", ax5043_ax5043_write_preamble, METH_VARARGS, ax5043_write_preamble_docstring},
     {NULL, NULL, 0, NULL}
 };
 
@@ -85,14 +73,3 @@ static PyObject *ax5043_ax5043_read_reg(PyObject *self, PyObject *args){
     return ret;
 }
 
-static PyObject *ax5043_ax5043_set_reg_tx(PyObject *self, PyObject *args){
-    ax5043_set_reg_tx();
-}
-
-static PyObject *ax5043_ax5043_set_reg_rx(PyObject *self, PyObject *args){
-    ax5043_set_reg_rx();
-}
-
-static PyObject *ax5043_ax5043_write_preamble(PyObject *self, PyObject *args){
-    ax5043_writePreamble();
-}
