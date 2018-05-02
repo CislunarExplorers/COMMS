@@ -42,7 +42,7 @@ static PyMethodDef module_methods[] = {
 };
 
 
-PyMODINIT_FUNC init_AX5043(void)
+PyMODINIT_FUNC init_ax5043(void)
 {
 	PyObject *m = Py_InitModule3("_ax5043", module_methods, module_docstring);
 	if(m == NULL)
