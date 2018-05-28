@@ -25,5 +25,4 @@ else:
 	if(data == "Marco")
 		radio.transmit("Marco")
 
-
 ######### Test 2 : Scheduled Commands ######
